@@ -19,6 +19,40 @@ workflow_action.is_workflow_action_already_created = custom_workflow_action.is_w
 workflow_action.get_allowed_roles = custom_workflow_action.get_allowed_roles
 workflow_action.get_next_possible_transitions = custom_workflow_action.get_next_possible_transitions
 
+
+fixtures = [
+	{
+		"doctype": "Custom Field",
+		"filters": [
+			[
+				"name",
+				"in",
+				(
+                    "Workflow Transition-custom_use_role_formula",
+                    "Workflow Transition-custom_role_formula",
+                    "Workflow Transition-custom_role",
+				),
+			]
+		],
+	},
+	{
+		"doctype": "Property Setter",
+		"filters": [
+			[
+				"name",
+				"in",
+				(
+                    "Workflow Transition-allowed-fieldtype",
+                    "Workflow Transition-allowed-default",
+                    "Workflow Transition-allowed-is_virtual",
+				),
+			]
+		],
+	},
+]
+
+
+
 # Includes in <head>
 # ------------------
 
@@ -190,7 +224,8 @@ override_doctype_class = {
 # Ignore links to specified DocTypes when deleting documents
 # -----------------------------------------------------------
 
-# ignore_links_on_delete = ["Communication", "ToDo"]
+# kittiu: This hook is not necessary if field "allowed" is type "Data" in doctype
+ignore_links_on_delete = ["Workflow Transition"]
 
 # Request Events
 # ----------------
