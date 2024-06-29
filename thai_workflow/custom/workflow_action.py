@@ -31,12 +31,15 @@ def get_allowed_roles(user, workflow, workflow_state):
 
 	# monkey patch
 	allowed_roles = [
-		frappe.get_cached_doc("Workflow Transition", t).allowed
+		frappe.get_doc("Workflow Transition", t).allowed
 		for t in wkf_trans
 	]
 	# --
 
 	user_roles = set(frappe.get_roles(user))
+	# monkey patch
+	allowed_roles = [r for r in allowed_roles if r]
+	# --
 	return set(allowed_roles).intersection(user_roles)
 
 
@@ -51,7 +54,7 @@ def get_next_possible_transitions(workflow_name, state, doc=None):
 	# monkey patch
 	transitions = []
 	for t in wkf_trans:
-		tran = frappe.get_cached_doc("Workflow Transition", t)
+		tran = frappe.get_doc("Workflow Transition", t)
 		transitions.append(frappe._dict({
 			"allowed": tran.allowed,
 			"action": tran.action,
