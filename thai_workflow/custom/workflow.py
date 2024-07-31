@@ -46,6 +46,9 @@ def get_transitions(
 		if transition.state == current_state and transition.allowed in roles:
 			if not is_transition_condition_satisfied(transition, doc):
 				continue
-			transitions.append(transition.as_dict())
-
+		    # Monkey patch here
+			transition_vals = transition.as_dict()
+			transition_vals.update(allowed=transition.allowed)
+			transitions.append(transition_vals)
+			# ----
 	return transitions
