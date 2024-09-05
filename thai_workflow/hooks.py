@@ -6,20 +6,6 @@ app_email = "kittiu@ecosoft.co.th"
 app_license = "mit"
 # required_apps = []
 
-# Monkey patching
-# ------------------
-
-import frappe.model.workflow as workflow
-import thai_workflow.custom.workflow as custom_workflow
-workflow.get_transitions = custom_workflow.get_transitions
-
-import frappe.workflow.doctype.workflow_action.workflow_action as workflow_action
-import thai_workflow.custom.workflow_action as custom_workflow_action
-workflow_action.is_workflow_action_already_created = custom_workflow_action.is_workflow_action_already_created
-workflow_action.get_allowed_roles = custom_workflow_action.get_allowed_roles
-workflow_action.get_next_possible_transitions = custom_workflow_action.get_next_possible_transitions
-
-
 fixtures = [
 	{
 		"doctype": "Custom Field",
