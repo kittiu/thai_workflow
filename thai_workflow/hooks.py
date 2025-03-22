@@ -17,6 +17,7 @@ fixtures = [
                     "Workflow Transition-custom_use_role_formula",
                     "Workflow Transition-custom_role_formula",
                     "Workflow Transition-custom_role",
+                    "Workflow-custom_include_all_attachments_in_email",
 				),
 			]
 		],

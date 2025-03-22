@@ -12,8 +12,10 @@ import frappe.workflow.doctype.workflow_action.workflow_action as workflow_actio
 from thai_workflow.custom.workflow_action import (
     is_workflow_action_already_created,
     get_allowed_roles,
-    get_next_possible_transitions
+    get_next_possible_transitions,
+	get_common_email_args
 )
 workflow_action.is_workflow_action_already_created = is_workflow_action_already_created
 workflow_action.get_allowed_roles = get_allowed_roles
 workflow_action.get_next_possible_transitions = get_next_possible_transitions
+workflow_action.get_common_email_args = get_common_email_args
