@@ -11,7 +11,7 @@ class WorkflowTransitionTH(WorkflowTransition):
             if doc:
                 role = frappe.safe_eval(
                     self.custom_role_formula,
-                    get_workflow_safe_globals(), dict(doc=doc.as_dict())
+                    get_workflow_safe_globals(), dict(doc=doc)
                 )
                 return role
             return "Role Formula"
